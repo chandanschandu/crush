@@ -13,22 +13,25 @@
 
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start; /* Align to the left */
+            align-items: flex-start; /* Align to the top */
             min-height: 100vh;
             background-size: cover;
             background-position: center;
         }
 
         .wrapper {
-            position: relative;
-            width: 100%;
+            position: fixed; /* Keeps it fixed on the left side */
+            top: 10px; /* Adjust distance from the top edge */
+            left: 20px; /* Adjust distance from the left edge */
+            width: 50%;
             max-width: 400px;
             text-align: center;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            padding: 10px;
+            z-index: 1000; /* Keeps it above other elements if needed */
         }
 
         h2 {
@@ -79,17 +82,31 @@
         }
 
         @media (max-width: 500px) {
+            /* Mobile styles */
+            .wrapper {
+                position: fixed; /* Keeps it fixed on mobile view */
+                top: 20px; /* Distance from the top edge */
+                left: 20px; /* Distance from the left edge */
+                width: 90%; /* Makes the wrapper responsive */
+                max-width: none; /* Removes the max-width restriction */
+                text-align: center;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px;
+            }
+
             h2 {
-                font-size: 1.5em;
+                font-size: 1.5em; /* Adjust font size for smaller screens */
             }
 
             button {
-                width: 120px;
-                font-size: 1em;
+                width: 120px; /* Adjust button size for mobile */
+                font-size: 1em; /* Adjust button font size */
             }
 
             .gif {
-                max-width: 200px;
+                max-width: 200px; /* Adjust gif size for mobile */
             }
         }
     </style>
@@ -114,7 +131,7 @@
 
         // Change text and gif when the Yes button is clicked
         yesBtn.addEventListener("click", () => {
-            question.innerHTML = "You got Rickrolled 😘";
+            question.innerHTML = "Thank you 😘";
             gif.src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGI1cW5wMWhpaDF5b3pjdTF0OHZrcHJvaGkzOHJteDhmd245OGRnZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vuw9m5wXviFIQ/giphy.gif";
         });
 
